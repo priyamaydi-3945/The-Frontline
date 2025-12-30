@@ -1,235 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontline | Humanitarian Aid</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontline Fundraising</title>
+  <style>
+    :root {
+      --primary-green: #4caf50;
+      --light-green: #81c784;
+      --light-teal: #81d4fa;
+      --lighter-teal: #b3e5fc;
+      --dark-text: #2c3e50;
+      --bg-color: #f5f5f5;
+    }
 
-    <style>
-        :root {
-            --primary-blue: #00AEEF;
-            --primary-pink: #EC6DB0;
-            --text-gray: #666;
-            --light-bg: #F9FAFB;
-            --gradient: linear-gradient(90deg, #00AEEF, #EC6DB0);
-        }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--dark-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    header {
+      background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+      color: white;
+      padding: 15px 0;
+      width: 100%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #ffffff;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
+    .logo {
+      width: 80px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
 
-        h1, h2, h3, .logo, nav a { font-family: 'Fredoka', sans-serif; }
+    h1 {
+      font-size: 28px;
+      margin: 0;
+    }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
+    .progress-container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .logo i { font-size: 2.2rem; color: #5D5FEF; }
+    .progress-bar {
+      height: 35px;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+      text-align: center;
+      color: white;
+      line-height: 35px;
+      border-radius: 20px;
+      transition: width 1s ease-in-out;
+      font-weight: bold;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 20px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover { color: var(--primary-blue); }
+    p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
 
-        .hero { padding: 60px 8%; text-align: center; background-color: var(--light-bg); }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-        .hero-card {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
-            max-width: 950px;
-            margin: 0 auto;
-        }
+    .hero {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-        .hero h1 {
-            font-size: 4rem;
-            background: linear-gradient(90deg, #7A8FFF, #FF839D);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
 
-        .btn-gradient {
-            border: none;
-            padding: 16px 35px;
-            border-radius: 50px;
-            color: white;
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            background: var(--gradient);
-            box-shadow: 0 8px 20px rgba(236, 109, 176, 0.2);
-            margin: 10px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+    .member {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 200px;
+    }
 
-        .btn-gradient:hover { transform: scale(1.05); }
+    .member img {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-        section { padding: 80px 8%; text-align: center; }
+    .member h3 {
+      margin: 10px 0 5px;
+      color: var(--primary-green);
+    }
 
-        .section-title { color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 25px; }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: white;
+      width: 100%;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
 
-        .progress-container {
-            background: #F0F0F0;
-            height: 30px;
-            border-radius: 20px;
-            max-width: 600px;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-        .progress-bar { width: 0%; height: 100%; background: #E0E0E0; }
-
-        .team-grid { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 40px;}
-        .team-card {
-            background: white;
-            padding: 40px 25px;
-            border-radius: 25px;
-            flex: 1;
-            min-width: 280px;
-            max-width: 320px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            text-align: left;
-        }
-
-        .profile-circle {
-            width: 140px; height: 140px; border-radius: 50%;
-            border: 5px solid var(--primary-blue); margin: 0 auto 20px;
-            overflow: hidden; background: #eee;
-        }
-        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
-
-        input, textarea {
-            width: 100%; padding: 18px; margin-bottom: 15px;
-            border: 2px solid #F0F0F0; border-radius: 15px;
-            font-family: 'Quicksand', sans-serif;
-            background: #FAFAFA;
-        }
-
-        footer { padding: 60px 8%; text-align: center; background: #fff; border-top: 1px solid #eee; }
-        
-        .social-handle {
-            display: block;
-            margin-top: 10px;
-            font-weight: 700;
-            color: #7A8FFF;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .social-icons { margin: 20px 0; font-size: 1.8rem; }
-        .social-icons a { margin: 0 15px; color: #7A8FFF; text-decoration: none; transition: 0.3s; }
-        .social-icons a:hover { color: var(--primary-pink); }
-        
-        .footer-info { font-size: 0.9rem; color: #bbb; margin-top: 20px; font-weight: 600; }
-    </style>
+    .quote {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-weight: 700;
+      color: var(--dark-text);
+      font-size: 26px;
+      margin-top: 40px;
+      line-height: 1.4;
+      text-shadow: 2px 2px 0 var(--lighter-teal), 4px 4px 0 var(--light-teal);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
-<body>
 
-    <header>
-        <div class="logo"><i class="fas fa-hand-holding-medical"></i></div>
-        <nav>
-            <a href="#mission">Mission</a>
-            <a href="#team">Team</a>
-            <a href="#volunteer">Volunteer</a>
-        </nav>
-    </header>
+<body>
+  <header>
+    <img src="download.png" alt="Hermes Health Symbol" class="logo" />
+    <h1>Frontline Fundraising Progress</h1>
+  </header>
+
+  <main>
+    <div class="progress-container">
+      <div id="progress-bar" class="progress-bar">0%</div>
+    </div>
+    <p id="progress-text">$0 raised of $1000 goal</p>
 
     <section class="hero">
-        <div class="hero-card">
-            <h1>Frontline</h1>
-            <p>Aiding people in war-affected regions like Gaza and Ukraine — supplying immediate relief and longer-term support.</p>
-            <a href="#mission" class="btn-gradient">Donate Now</a>
-            <a href="#volunteer" class="btn-gradient">Join as Volunteer</a>
-        </div>
+      <h2>Our Mission</h2>
+      <p>Frontline is dedicated to supporting healthcare workers and communities through volunteer efforts and fundraising campaigns. Every dollar goes toward helping those who help others.</p>
     </section>
 
-    <section id="mission">
-        <h2 class="section-title">Our Mission</h2>
-        <p style="max-width: 800px; margin: 0 auto 30px;">We aim to raise $25,000 to support families displaced and affected by conflicts. We channel resources through vetted partners and local volunteers to make relief fast and accountable.</p>
-        
-        <div class="progress-container"><div class="progress-bar"></div></div>
-        <p style="font-weight: 700; color: #999;">$0 raised of $25,000 goal</p>
-
-        <h2 class="section-title" style="margin-top: 50px;">Support Our Cause</h2>
-        <div>
-            <a href="https://www.paypal.com/paypalme/YOUR_HANDLE" target="_blank" class="btn-gradient">Donate via PayPal</a>
-            <a href="https://www.gofundme.com/f/YOUR_CAMPAIGN" target="_blank" class="btn-gradient">Donate via GoFundMe</a>
-            <a href="https://venmo.com/u/YOUR_HANDLE" target="_blank" class="btn-gradient">Donate via Venmo</a>
+    <section id="team">
+      <h2>Our Team</h2>
+      <div class="team">
+        <div class="member">
+          <img src="hasini.jpg" alt="Hasini Garrepalli">
+          <h3>Hasini Garrepalli</h3>
+          <p>Rising junior at Franklin High School. Passionate about service and community impact.</p>
         </div>
+        <div class="member">
+          <img src="priya.jpg" alt="Priya">
+          <h3>Priya</h3>
+          <p>President of Frontline. Dedicated to empowering youth through meaningful volunteering.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="team" style="background: var(--light-bg);">
-        <h2 class="section-title">Meet Our Team</h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="profile-circle"><img src="https://via.placeholder.com/150" alt="Priya"></div>
-                <h3>Priya Maydipalle</h3>
-                <p><strong>President</strong></p>
-                <p class="bio" style="font-size: 0.9rem;">Rising senior at Westborough High School. Dedicated to rebuilding lives through small acts of kindness.</p>
-            </div>
-            <div class="team-card">
-                <div class="profile-circle"><img src="https://via.placeholder.com/150" alt="Hasini"></div>
-                <h3>Hasini Garrepalli</h3>
-                <p><strong>Treasurer</strong></p>
-                <p class="bio" style="font-size: 0.9rem;">Rising junior at Franklin High School. Believes uplifting others is the most valuable use of time.</p>
-            </div>
-            <div class="team-card">
-                <div class="profile-circle"><img src="https://via.placeholder.com/150" alt="Yashhu"></div>
-                <h3>Yashhu Kukula</h3>
-                <p><strong>Secretary</strong></p>
-                <p class="bio" style="font-size: 0.9rem;">Rising junior at Ashland High School. Passionate about art and music, believing compassion has the power to heal.</p>
-            </div>
-        </div>
-    </section>
+    <div class="quote">
+      “It’s not how much we give but how much love we put into giving.”  
+      <br>– Mother Teresa
+    </div>
+  </main>
 
-    <section id="volunteer">
-        <h2 class="section-title">Volunteer With Us</h2>
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" style="max-width: 600px; margin: 0 auto;">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="4" placeholder="Why would you like to volunteer?" required></textarea>
-            <button type="submit" class="btn-gradient">Sign Up</button>
-        </form>
-    </section>
+  <footer>
+    <p>© 2025 Frontline | Made with heart and purpose 💚</p>
+  </footer>
 
-    <footer>
-        <h2 class="section-title">Stay Updated</h2>
-        <div class="social-icons">
-            <a href="https://instagram.com/YOUR_HANDLE" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com/YOUR_HANDLE" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://facebook.com/YOUR_HANDLE" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <a href="https://twitter.com/YOUR_HANDLE" class="social-handle" target="_blank">@YourTwitterHandle</a>
-        <div class="footer-info">
-            <p>© 2025 Frontline | Built with dedication for humanitarian aid.</p>
-            <p style="font-style: italic; margin-top: 10px;">"Small things with great love."</p>
-        </div>
-    </footer>
+  <script>
+    const goal = 1000;
+    const venmoAmount = 0; // update manually
 
+    async function updateProgress() {
+      try {
+        // Replace with your actual GoFundMe campaign link
+        const response = await fetch("https://www.gofundme.com/f/YOUR_GOFUNDME_CAMPAIGN_URL/widget/medium");
+        const text = await response.text();
+        const match = text.match(/"current_amount":(\d+)/);
+        const gofundmeTotal = match ? parseInt(match[1]) / 100 : 0;
+        const totalRaised = gofundmeTotal + venmoAmount;
+        const percent = Math.min((totalRaised / goal) * 100, 100);
+
+        const bar = document.getElementById("progress-bar");
+        const textEl = document.getElementById("progress-text");
+        bar.style.width = percent + "%";
+        bar.textContent = Math.round(percent) + "%";
+        textEl.textContent = `$${totalRaised.toFixed(2)} raised of $${goal} goal`;
+      } catch (error) {
+        console.error("Error fetching GoFundMe data:", error);
+      }
+    }
+
+    updateProgress();
+  </script>
 </body>
 </html>
